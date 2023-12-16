@@ -3,32 +3,43 @@ import { RiCloseLine, RiMenu3Fill } from "react-icons/ri";
 import "../index.css";
 
 export const Nav = () => {
-  const [showMenu, setShowMenu] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
   return (
     <>
       <header className="typecentered-nav">
         <a className="brand" href="/">
           <span className="icon">👟</span> Shoe Spectrum
         </a>
-        <nav className={`nav-container ${showMenu ? "show" : ""}`}>
-          <button className="nav-links">Shop Now</button>
-          <div className="nav-links1">
-            <div className="nav-link">
-              <a className="cta">Store</a>
-            </div>
-            <div className="nav-link">
-              <a className="cta">Our Story</a>
-            </div>
-            <div className="nav-link">
-              <a className="cta">Designers</a>
-            </div>
-          </div>
+        <nav className="nav-container">
+          <button className="btn-shop">Shop Now</button>
+          <ul id="nav__links" className={isMenuOpen ? "visible" : ""}>
+            <li>
+              <a href="/">Store</a>
+            </li>
+            <li>
+              <a href="/">Our Story</a>
+            </li>
+            <li>
+              <a href="/">Designers</a>
+            </li>
+          </ul>
         </nav>
 
-        <button onClick={() => setShowMenu(!showMenu)} className="nav--menu">
-          {showMenu ? <RiCloseLine /> : <RiMenu3Fill />}
-        </button>
+        <div className="button__container">
+          <button
+            className="nav__button"
+            aria-controls="nav__links"
+            aria-expanded={isMenuOpen}
+            aria-label="Menú"
+            onClick={toggleMenu}
+          >
+            {isMenuOpen ? <RiCloseLine /> : <RiMenu3Fill />}
+          </button>
+        </div>
       </header>
     </>
   );
