@@ -1,45 +1,47 @@
 import { useState } from "react";
-import { RiCloseLine, RiMenu3Fill } from "react-icons/ri";
+import { Link, NavLink } from "react-router-dom";
 import "../index.css";
 
 export const Nav = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [navBtnOpen, setNavBtnOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
   return (
     <>
-      <header className="typecentered-nav">
-        <a className="brand" href="/">
-          <span className="icon">👟</span> Shoe Spectrum
-        </a>
+      <header>
+        <div className="button__container">
+          <div
+            className="nav__button"
+            aria-controls="nav__links"
+            aria-expanded="true"
+            aria-label="Menú"
+            onClick={() => setNavBtnOpen(!navBtnOpen)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
         <nav className="nav-container">
-          <button className="btn-shop">Shop Now</button>
-          <ul id="nav__links" className={isMenuOpen ? "visible" : ""}>
+          <Link to="/" className="brand">
+            <span className="icon">👟</span> Shoe Spectrum
+          </Link>
+          <ul id="nav__links" className={navBtnOpen ? "open" : ""}>
             <li>
-              <a href="/">Store</a>
+              <NavLink to="/">Store</NavLink>
             </li>
             <li>
-              <a href="/">Our Story</a>
+              <NavLink to="/">Our Story</NavLink>
             </li>
             <li>
-              <a href="/">Designers</a>
+              <NavLink to="/">Designers</NavLink>
+            </li>
+            <li>
+              {" "}
+              <button className="btn-shop">Shop Now</button>
             </li>
           </ul>
         </nav>
-
-        <div className="button__container">
-          <button
-            className="nav__button"
-            aria-controls="nav__links"
-            aria-expanded={isMenuOpen}
-            aria-label="Menú"
-            onClick={toggleMenu}
-          >
-            {isMenuOpen ? <RiCloseLine /> : <RiMenu3Fill />}
-          </button>
-        </div>
       </header>
     </>
   );
