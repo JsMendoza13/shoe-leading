@@ -13,10 +13,6 @@ body {
   overflow-x: hidden;
 }
 
-.active {
-  background-color: #2f6761;
-}
-
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -28,7 +24,7 @@ body {
   font-size: 30px;
 }
 
-nav .brand {
+nav #brand {
   line-height: 150%;
   font-weight: 600;
   padding: 0 10px;
@@ -46,6 +42,9 @@ nav .brand {
 
 #nav__links {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem;
 }
 
 #nav__links li {
@@ -57,8 +56,7 @@ nav .brand {
   display: block;
   text-decoration: none;
   color: #f7fffb;
-  padding: 1rem;
-
+  padding: 10px;
   border-radius: 10px;
 }
 
@@ -71,7 +69,6 @@ nav .brand {
   border: 1px solid #f7fffb;
   background: #181618;
   color: #f7fffb;
-  margin: 5px 0;
   padding: 12px 20px;
   cursor: pointer;
 }
@@ -108,7 +105,11 @@ div .nav__button {
   border-radius: 0.2rem;
 }
 
-@media (max-width: 840px) {
+@media (max-width: 620px) {
+  .nav-container {
+    padding: 20px;
+  }
+
   div .nav__button {
     display: flex;
   }
@@ -118,7 +119,7 @@ div .nav__button {
     flex-direction: column;
     align-items: start;
   }
-  #nav__links ul {
+  #nav__links {
     flex-direction: column;
     width: 100%;
     margin-bottom: 0.25rem;
@@ -128,14 +129,18 @@ div .nav__button {
     display: flex;
   }
 
-  #nav__links ul li {
+  nav #brand.open {
+    display: none;
+  }
+
+  #nav__links li {
     margin: 10px;
     width: 100%;
     text-align: center;
   }
 
-  #nav__links ul li a {
-    margin: 0.2rem 0.5rem;
+  #nav__links li a {
+    margin: 0.1rem 1.5rem;
   }
 
   .btn-shop {

@@ -23,7 +23,7 @@ export const Nav = () => {
         </div>
 
         <nav className="nav-container">
-          <Link to="/" className="brand">
+          <Link to="/" id="brand" className={navBtnOpen ? "open" : ""}>
             <span className="icon">👟</span> Shoe Spectrum
           </Link>
           <ul id="nav__links" className={navBtnOpen ? "open" : ""}>
